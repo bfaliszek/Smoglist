@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+    <title>Smoglist</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Smoglist</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
+            aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor03">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/measurements">Dane pomiarowe</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" target="_blank"
+                   href="https://github.com/hackerspace-silesia/Smogomierz#smogomierz-">Zbuduj
+                    własny Smogomierz</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">O Smoglist</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<center>
+    <br>
+    <h3>Liczba urządzeń wysyłających dane do Smoglist: {{ devicesNumber }}</h3>
+    <br>
+</center>
+
+<div class="table-margin">
+<div class="table-responsive">
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Opis</th>
+        <th scope="col">Najpopularniejsza</th>
+        <th scope="col">Działająca na urządzeniach</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">Wersja oprogramowania</th>
+        <td>{{ mostcommonSW }}</td>
+        <td>{{ mostcommonSWNumber }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Oprogramowanie obsługujące meirnik PM</th>
+        <td>{{ mostcommonPMSW }}</td>
+        <td>{{ mostcommonPMSWNumber }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Wersja sprzętu</th>
+        <td>{{ mostcommonHW }}</td>
+        <td>{{ mostcommonHWNumber }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Miernik PM</th>
+        <td>{{ mostcommonPMSensor }}</td>
+        <td>{{ mostcommonPMSensorNumber }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Miernik Temperatury/Wilgotności</th>
+        <td>{{ mostcommonTHPSensor }}</td>
+        <td>{{ mostcommonTHPSensorNumber }}</td>
+    </tr>
+    </tbody>
+</table>
+</div>
+</div>
+
+
+<div class="table-margin">
+<div class="table-responsive">
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Funkcja</th>
+        <th scope="col">Włączone na urządzeniach</th>
+        <th scope="col">Wszystkich urządzeń</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">Luftdaten</th>
+        <td>{{ luftdatenEnableNumber }}</td>
+        <td>{{ devicesNumber }}</td>
+    </tr>
+    <tr>
+        <th scope="row">AirMonitor</th>
+        <td>{{ airmonitorEnableNumber }}</td>
+        <td>{{ devicesNumber }}</td>
+    </tr>
+    <tr>
+        <th scope="row">AirMonitor - Wykresy</th>
+        <td>{{ airmonitorGraphEnableNumber }}</td>
+        <td>{{ devicesNumber }}</td>
+    </tr>
+    <tr>
+        <th scope="row">ThingSpeak</th>
+        <td>{{ thingspeakEnableNumber }}</td>
+        <td>{{ devicesNumber }}</td>
+    </tr>
+    <tr>
+        <th scope="row">ThingSpeak - Wykresy</th>
+        <td>{{ thingspeakGraphEnableNumber }}</td>
+        <td>{{ devicesNumber }}</td>
+    </tr>
+    <tr>
+        <th scope="row">InfluxDB</th>
+        <td>{{ influxdbEnableNumber }}</td>
+        <td>{{ devicesNumber }}</td>
+    </tr>
+    <tr>
+        <th scope="row">MQTT</th>
+        <td>{{ mqttEnableNumber }}</td>
+        <td>{{ devicesNumber }}</td>
+    </tr>
+    <tr>
+        <th scope="row">DeepSleep</th>
+        <td>{{ deepsleepEnableNumber }}</td>
+        <td>{{ devicesNumber }}</td>
+    </tr>
+    <tr>
+        <th scope="row">AutoUpdate</th>
+        <td>{{ autoupdateEnableNumber }}</td>
+        <td>{{ devicesNumber }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Ciągłe pomiary PM</th>
+        <td>{{ frequentmesurementEnableNumber }}</td>
+        <td>{{ devicesNumber }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Wyświetlanie pomiarów PM1</th>
+        <td>{{ displaypm1EnableNumber }}</td>
+        <td>{{ devicesNumber }}</td>
+    </tr>
+    </tbody>
+</table>
+</div>
+</div>
+
+
+<div class="table-margin">
+<div class="table-responsive">
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Funkcja</th>
+        <th scope="col">Wartość</th>
+        <th scope="col">Włączone na urządzeniach</th>
+        <th scope="col">Wszystkich urządzeń</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">Częstotliwość wykonywania pomiarów PM</th>
+        <td>{{ mostcommonDustMeasurements }} minut</td>
+        <td>{{ mostcommonDustMeasurementsNumber }}</td>
+        <td>{{ devicesNumber }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Liczba pomiarów PM do uśredniania</th>
+        <td>{{ mostcommonPMaveraging }} pomiarów</td>
+        <td>{{ mostcommonPMaveragingNumber }}</td>
+        <td>{{ devicesNumber }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Częstotliwość wysyłania danych do AirMonitor/Luftdaten/Smoglist</th>
+        <td>{{ mostcommonSendingFrequency }} minut</td>
+        <td>{{ mostcommonSendingFrequencyNumber }}</td>
+        <td>{{ devicesNumber }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Częstotliwość wysyłania danych do ThingSpeak/InfluxDB/MQTT</th>
+        <td>{{ mostcommonSendingDBFrequency }} minut</td>
+        <td>{{ mostcommonSendingDBFrequencyNumber }}</td>
+        <td>{{ devicesNumber }}</td>
+    </tr>
+    </tbody>
+</table>
+</div>
+</div>
+
+<br>
+<center>
+    <div class="alert alert-dismissible alert-secondary">
+        <strong>Dane aktualizowane co 5 minut!</strong> Ostatnia aktualizacja: {{ lastupdateTime }}
+    </div>
+</center>
+<center>Smoglist &#9830;
+    <script type='text/javascript'>
+  		document.write(new Date().getFullYear());
+    </script>
+    <br><br>
+</center>
+<script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'
+        integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo'
+        crossorigin='anonymous'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js'
+        integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1'
+        crossorigin='anonymous'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'
+        integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM'
+        crossorigin='anonymous'></script>
+</body>
+</html>
