@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Smoglist'
-copyright = '2021, Faliszek'
-author = 'Faliszek'
+copyright = '2021, Blazej Faliszek'
+author = 'Blazej Faliszek'
 
 
 # -- General configuration ---------------------------------------------------
